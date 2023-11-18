@@ -20,8 +20,32 @@ public abstract class AbstractPiece {
 	};
 
 	public void makeMove(Board board, Square square) {
-
+		Square currentSquare = this.getCurrentSquare();
+	
+		// Save the state of the current square
+		boolean wasOccupied = currentSquare.isOccupied();
+		AbstractPiece previousPiece = currentSquare.getCurrentPiece();
+	
+		// Attempt to make the move
+		List<Location> validMoves = getValidMoves(board, currentSquare);
+		if (validMoves.contains(square.getLocation())) {
+			// Move is valid, update the board
+			currentSquare.setOccupied(false);
+			currentSquare.setCurrentPiece(null);
+	
+			this.setCurrentSquare(square);
+			square.setCurrentPiece(this);
+			square.setOccupied(true);
+		} else {
+			// Invalid move, revert the state of the current square
+			currentSquare.setOccupied(wasOccupied);
+			currentSquare.setCurrentPiece(previousPiece);
+	
+			System.out.println("Invalid move. The board remains unchanged.");
+		}
 	}
+	
+	
 
 	public AbstractPiece(PieceColor pieceColor) {
 		this.pieceColor = pieceColor;

@@ -35,20 +35,6 @@ public class Queen extends AbstractPiece {
     }
 
     @Override
-    public void makeMove(Board board, Square square) {
-        List<Location> validMoves = getValidMoves(board, this.getCurrentSquare());
-
-        if (validMoves.contains(square.getLocation())) {
-            this.getCurrentSquare().setOccupied(false);
-            this.setCurrentSquare(square);
-            square.setCurrentPiece(this);
-            square.setOccupied(true);
-        } else {
-            System.out.println("Invalid move. Please try again.");
-        }
-    }
-
-    @Override
     public List<Location> getValidMoves(Board board, Square square) {
         List<Location> moveCandidates = new ArrayList<>();
         moveCandidates.addAll(bishop.getValidMoves(board, square));
