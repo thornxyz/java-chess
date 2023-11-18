@@ -10,8 +10,8 @@ import com.chess.squares.Square;
 
 public class Queen extends AbstractPiece {
 
-    private Movable bishop;
-    private Movable rook;
+    private AbstractPiece bishop;
+    private AbstractPiece rook;
 
     public Queen(PieceColor pieceColor) {
         super(pieceColor);
@@ -20,7 +20,7 @@ public class Queen extends AbstractPiece {
         this.rook=new Rook(pieceColor);
     }
 
-    public Queen(PieceColor pieceColor, Movable bishop, Movable rook) {
+    public Queen(PieceColor pieceColor, AbstractPiece bishop, AbstractPiece rook) {
         super(pieceColor);
         this.bishop = bishop;
         this.rook = rook;

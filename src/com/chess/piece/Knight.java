@@ -32,11 +32,13 @@ public class Knight extends AbstractPiece {
         return moveCandidates;
     }
 
-    private void getMoves(List<Location> candidates, Map<Location, Square> squareMap, Location current, int rankOffset, int fileOffset) {
+    private void getMoves(List<Location> candidates, Map<Location, Square> squareMap, Location current, int rankOffset,
+            int fileOffset) {
         try {
             Location next = LocationFactory.build(current, fileOffset, rankOffset);
             if (squareMap.containsKey(next)) {
-                if (!squareMap.get(next).isOccupied() || !squareMap.get(next).getCurrentPiece().getPieceColor().equals(this.pieceColor)) {
+                if (!squareMap.get(next).isOccupied()
+                        || !squareMap.get(next).getCurrentPiece().getPieceColor().equals(this.pieceColor)) {
                     candidates.add(next);
                 }
             }

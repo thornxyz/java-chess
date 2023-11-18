@@ -28,7 +28,8 @@ public class Bishop extends AbstractPiece {
         return moveCandidates;
     }
 
-    private void getDiagonalMoves(List<Location> candidates, Map<Location, Square> squareMap, Location current, int fileOffset, int rankOffset) {
+    private void getDiagonalMoves(List<Location> candidates, Map<Location, Square> squareMap, Location current,
+            int fileOffset, int rankOffset) {
         try {
             Location next = LocationFactory.build(current, fileOffset, rankOffset);
             while (squareMap.containsKey(next)) {
@@ -42,7 +43,7 @@ public class Bishop extends AbstractPiece {
                 next = LocationFactory.build(next, fileOffset, rankOffset);
             }
         } catch (Exception e) {
-            // Handle or log the exception as needed
+
             e.printStackTrace();
         }
     }

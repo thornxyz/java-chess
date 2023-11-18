@@ -10,8 +10,8 @@ import com.chess.squares.Square;
 
 public class King extends AbstractPiece {
 
-    private Movable rook;
-    private Movable bishop;
+    private AbstractPiece rook;
+    private AbstractPiece bishop;
 
     public King(PieceColor pieceColor) {
         super(pieceColor);
@@ -20,7 +20,7 @@ public class King extends AbstractPiece {
         this.rook = new Rook(pieceColor);
     }
 
-    public King(PieceColor pieceColor, Movable bishop, Movable rook) {
+    public King(PieceColor pieceColor, AbstractPiece bishop, AbstractPiece rook) {
         super(pieceColor);
         this.name = "King";
         this.bishop = bishop;
@@ -35,9 +35,8 @@ public class King extends AbstractPiece {
 
         Location current = this.getCurrentSquare().getLocation();
         return moveCandidates.stream()
-                .filter(candidate ->
-                        Math.abs(candidate.getFile().ordinal() - current.getFile().ordinal()) <= 1 &&
-                                Math.abs(candidate.getRank() - current.getRank()) <= 1)
+                .filter(candidate -> Math.abs(candidate.getFile().ordinal() - current.getFile().ordinal()) <= 1 &&
+                        Math.abs(candidate.getRank() - current.getRank()) <= 1)
                 .collect(Collectors.toList());
     }
 
@@ -62,9 +61,8 @@ public class King extends AbstractPiece {
         moveCandidates.addAll(bishop.getValidMoves(board, square));
         Location current = square.getLocation();
         return moveCandidates.stream()
-                .filter(candidate ->
-                        Math.abs(candidate.getFile().ordinal() - current.getFile().ordinal()) <= 1 &&
-                                Math.abs(candidate.getRank() - current.getRank()) <= 1)
+                .filter(candidate -> Math.abs(candidate.getFile().ordinal() - current.getFile().ordinal()) <= 1 &&
+                        Math.abs(candidate.getRank() - current.getRank()) <= 1)
                 .collect(Collectors.toList());
     }
 }

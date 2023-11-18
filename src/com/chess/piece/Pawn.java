@@ -29,7 +29,7 @@ public class Pawn extends AbstractPiece {
 
 		if (isFirstMove) {
 			moveCandidates.add(LocationFactory.build(current, 0, 2 * sign));
-			isFirstMove = false; // Update isFirstMove here
+			isFirstMove = false; 
 		}
 
 		moveCandidates.add(LocationFactory.build(current, 1, sign));
