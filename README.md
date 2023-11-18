@@ -1,3 +1,3 @@
 # java-chess
 
-basic chess in java
+chess board with pieces on the commandline, can do valid movements on the pieces
