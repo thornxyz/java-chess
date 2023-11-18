@@ -62,7 +62,9 @@ public class Board {
 	}
 
 	public void printBoard() {
+		System.out.println();
 		for (int i = 0; i < boardSquares.length; i++) {
+			System.out.print("\t");
 			System.out.print(BOARD_LENGTH - i + " ");
 			for (int j = 0; j < boardSquares[i].length; j++) {
 				if (boardSquares[i][j].isOccupied()) {
@@ -74,6 +76,7 @@ public class Board {
 			}
 			System.out.println();
 		}
+		System.out.print("\t");
 		System.out.print("  ");
 		for (File file : File.values()) {
 			System.out.print(file.name() + " ");

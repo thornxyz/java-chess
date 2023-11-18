@@ -10,6 +10,10 @@ import com.chess.squares.Square;
 public class Game {
 	public static void main(String[] args) {
 		Board board = new Board();
+		
+		System.out.println("\nWelcome to Chess!");
+		System.out.println("Here is an example move: E2->E4");
+		
 		board.printBoard();
 
 		try (Scanner scanner = new Scanner(System.in)) {
