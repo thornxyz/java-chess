@@ -7,7 +7,7 @@ import com.chess.board.Board;
 import com.chess.common.Location;
 import com.chess.squares.Square;
 
-public class Queen extends AbstractPiece implements Movable{
+public class Queen extends AbstractPiece{
 	
 	private Movable bishop;
 	private Movable rook;
@@ -33,9 +33,10 @@ public class Queen extends AbstractPiece implements Movable{
 
 	@Override
 	public void makeMove(Square square) {
-		Square current = this.getCurrentSquare();
-		this.setCurrentSquare(square);
-		current.reset();		
+		this.currentSquare.setOccupied(false);
+	    this.setCurrentSquare(square);
+	    square.setCurrentPiece(this);
+	    square.setOccupied(true);		
 	}
 
 	@Override

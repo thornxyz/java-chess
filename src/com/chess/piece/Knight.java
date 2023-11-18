@@ -9,7 +9,7 @@ import com.chess.common.Location;
 import com.chess.common.LocationFactory;
 import com.chess.squares.Square;
 
-public class Knight extends AbstractPiece implements Movable{
+public class Knight extends AbstractPiece{
 
 	public Knight(PieceColor pieceColor) {
 		super(pieceColor);

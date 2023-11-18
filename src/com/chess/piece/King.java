@@ -8,7 +8,7 @@ import com.chess.board.Board;
 import com.chess.common.Location;
 import com.chess.squares.Square;
 
-public class King extends AbstractPiece implements Movable {
+public class King extends AbstractPiece {
 	
 	private final Movable rook;
 	private final Movable bishop;
@@ -39,6 +39,10 @@ public class King extends AbstractPiece implements Movable {
 
 	@Override
 	public void makeMove(Square square) {
+		this.currentSquare.setOccupied(false);
+	    this.setCurrentSquare(square);
+	    square.setCurrentPiece(this);
+	    square.setOccupied(true);
 	}
 
 	@Override

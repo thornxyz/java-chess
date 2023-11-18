@@ -9,7 +9,7 @@ import com.chess.common.Location;
 import com.chess.common.LocationFactory;
 import com.chess.squares.Square;
 
-public class Bishop extends AbstractPiece implements Movable{
+public class Bishop extends AbstractPiece{
 
 	public Bishop(PieceColor pieceColor) {
 		super(pieceColor);
