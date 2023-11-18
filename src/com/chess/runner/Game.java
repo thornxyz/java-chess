@@ -24,7 +24,7 @@ public class Game {
 				Square fromSq=board.getLocationSquareMap().get(new Location(fromFile, fromRank));
 				Square toSq=board.getLocationSquareMap().get(new Location(toFile, toRank));
 				
-				fromSq.getCurrentPiece().makeMove(toSq);
+				fromSq.getCurrentPiece().makeMove(board, toSq);
 				fromSq.reset();
 				
 				board.printBoard();

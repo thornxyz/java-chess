@@ -24,62 +24,84 @@ public class Pawn extends AbstractPiece {
 		List<Location> moveCandidates = new ArrayList<>();
 		Location current = this.getCurrentSquare().getLocation();
 		int sign = (pieceColor.equals(PieceColor.DARK)) ? -1 : 1;
-		moveCandidates.add(LocationFactory
-				.build(current, 0, sign));
+
+		moveCandidates.add(LocationFactory.build(current, 0, sign));
+
 		if (isFirstMove) {
-			moveCandidates.add(LocationFactory
-					.build(current, 0, 2 * sign));
-			return moveCandidates;
+			moveCandidates.add(LocationFactory.build(current, 0, 2 * sign));
+			isFirstMove = false; // Update isFirstMove here
 		}
 
 		moveCandidates.add(LocationFactory.build(current, 1, sign));
 		moveCandidates.add(LocationFactory.build(current, -1, sign));
+
 		Map<Location, Square> squareMap = board.getLocationSquareMap();
-		List<Location> validMoves = moveCandidates.stream()
+
+		return moveCandidates.stream()
 				.filter(squareMap::containsKey)
+				.filter(candidate -> validateMove(candidate, squareMap))
 				.collect(Collectors.toList());
+	}
 
-		return validMoves.stream().filter((candidate) -> {
-			if (candidate.getFile().equals(this.getCurrentSquare().getLocation().getFile()) &&
-					squareMap.get(candidate).isOccupied()) {
-				return false;
+	private boolean validateMove(Location candidate, Map<Location, Square> squareMap) {
+		Square destinationSquare = squareMap.get(candidate);
+
+		if (!squareMap.containsKey(candidate)) {
+			return false; 
+		}
+
+		if (destinationSquare.isOccupied()) {
+			if (candidate.getFile().equals(this.getCurrentSquare().getLocation().getFile())) {
+				return false; 
+			} else {
+				
+				return true;
 			}
-
-			if (squareMap.get(candidate).isOccupied() &&
-					candidate.getFile().equals(this.getCurrentSquare().getLocation().getFile())) {
-				return false;
+		} else {
+			if (!candidate.getFile().equals(this.getCurrentSquare().getLocation().getFile())) {
+				return false; 
 			}
+		}
 
-			if (squareMap.get(candidate).isOccupied() &&
-					squareMap.get(candidate).getCurrentPiece().getPieceColor().equals(this.getPieceColor()) &&
-					candidate.getFile().equals(this.getCurrentSquare().getLocation().getFile())) {
-				return false;
-			}
-
-			if (!squareMap.get(candidate).isOccupied() &&
-					!candidate.getFile().equals(this.getCurrentSquare().getLocation().getFile())) {
-				return false;
-			}
-
-			return true;
-		}).collect(Collectors.toList());
-
+		return true;
 	}
 
 	@Override
-	public void makeMove(Square square) {
-		if (isFirstMove) {
-			isFirstMove = false;
+	public void makeMove(Board board, Square square) {
+		List<Location> validMoves = getValidMoves(board);
+
+		if (validMoves.contains(square.getLocation())) {
+			this.getCurrentSquare().setOccupied(false);
+			this.setCurrentSquare(square);
+			square.setCurrentPiece(this);
+			square.setOccupied(true);
+		} else {
+			System.out.println("Invalid move. Please try again.");
 		}
-		this.currentSquare.setOccupied(false);
-		this.setCurrentSquare(square);
-		square.setCurrentPiece(this);
-		square.setOccupied(true);
 	}
 
 	@Override
 	public List<Location> getValidMoves(Board board, Square square) {
-		return null;
+		List<Location> moveCandidates = new ArrayList<>();
+		Location current = square.getLocation();
+		int sign = (pieceColor.equals(PieceColor.DARK)) ? -1 : 1;
+
+		moveCandidates.add(LocationFactory.build(current, 0, sign));
+
+		if (isFirstMove) {
+			moveCandidates.add(LocationFactory.build(current, 0, 2 * sign));
+			isFirstMove = false; 
+		}
+
+		moveCandidates.add(LocationFactory.build(current, 1, sign));
+		moveCandidates.add(LocationFactory.build(current, -1, sign));
+
+		Map<Location, Square> squareMap = board.getLocationSquareMap();
+
+		return moveCandidates.stream()
+				.filter(squareMap::containsKey)
+				.filter(candidate -> validateMove(candidate, squareMap))
+				.collect(Collectors.toList());
 	}
 
 }
