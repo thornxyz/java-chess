@@ -82,5 +82,6 @@ public class Board {
 			System.out.print(file.name() + " ");
 		}
 		System.out.println();
+		System.out.println();
 	}
 }
