@@ -1,7 +1,7 @@
 # java-chess
 
-chess board with pieces on the terminal, can perform valid movements for each piece<br><br>
+chess board with pieces in javafx, can perform valid movements for each piece<br><br>
 <p align="center">
-  <img width="300" alt="image" src="https://github.com/thornxyz/java-chess/assets/111498659/9d64db51-6d89-49ba-bf5b-9a70820aca78">
+  <img width="300" alt="image" src="https://github.com/thornxyz/java-chess/assets/111498659/e19b6027-e79c-4db6-a382-3d55c2ffc53f">
 </p>
 
