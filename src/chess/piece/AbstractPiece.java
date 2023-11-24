@@ -26,7 +26,7 @@ public abstract class AbstractPiece {
 	    AbstractPiece previousPiece = currentSquare.getCurrentPiece();
 
 	    List<Location> validMoves = getValidMoves(board, currentSquare);
-	    if (validMoves.contains(square.getLocation())) {
+	    if (validMoves.contains(square.getLocation()) && square.isOccupied()==false) {
 	        Location curr = currentSquare.getLocation();
 			currentSquare.setOccupied(false);
 			currentSquare.setCurrentPiece(null);

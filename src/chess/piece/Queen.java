@@ -20,11 +20,6 @@ public class Queen extends AbstractPiece {
         this.rook=new Rook(pieceColor);
     }
 
-    public Queen(PieceColor pieceColor, AbstractPiece bishop, AbstractPiece rook) {
-        super(pieceColor);
-        this.bishop = bishop;
-        this.rook = rook;
-    }
 
     @Override
     public List<Location> getValidMoves(Board board) {
@@ -44,3 +39,4 @@ public class Queen extends AbstractPiece {
                 .collect(Collectors.toList());
     }
 }
+
