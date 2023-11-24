@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
 public class PieceCreate {
     public static ImageView createPiece(PieceType pieceType, double imageSize) {
         String imagePath = pieceType.getImagePath();
-        
+
         try (InputStream inputStream = PieceCreate.class.getResourceAsStream(imagePath)) {
             if (inputStream != null) {
                 Image image = new Image(inputStream);
@@ -29,6 +29,5 @@ public class PieceCreate {
             return new ImageView();
         }
     }
-     
-    
+
 }

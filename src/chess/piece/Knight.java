@@ -32,7 +32,11 @@ public class Knight extends AbstractPiece {
         return moveCandidates;
     }
 
-    private void getMoves(List<Location> candidates, Map<Location, Square> squareMap, Location current, int rankOffset,
+    private void getMoves(
+            List<Location> candidates,
+            Map<Location, Square> squareMap,
+            Location current,
+            int rankOffset,
             int fileOffset) {
         try {
             Location next = LocationFactory.build(current, fileOffset, rankOffset);

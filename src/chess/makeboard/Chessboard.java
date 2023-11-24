@@ -53,36 +53,37 @@ public class Chessboard {
                 }
 
                 if (row == 0 || col == 0 || row == 9 || col == 9) {
-                	squarePane.setStyle("-fx-background-color: black");
+                    squarePane.setStyle("-fx-background-color: black");
                 } else {
-                    squarePane.setStyle((row + col) % 2 == 0 ? "-fx-background-color: white;" : "-fx-background-color: gray;");
+                    squarePane.setStyle(
+                            (row + col) % 2 == 0 ? "-fx-background-color: white;" : "-fx-background-color: gray;");
                 }
 
                 gridPane.add(squarePane, col, row);
-                
+
             }
         }
     }
-    
+
     public Board getboard() {
-    	return board;
+        return board;
     }
-    
-    
+
     public static void removePiece(GridPane gridPane, int col, int row) {
         ObservableList<Node> children = gridPane.getChildren();
 
         for (Node node : children) {
-            if (node instanceof ImageView && GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
+            if (node instanceof ImageView && GridPane.getColumnIndex(node) == col
+                    && GridPane.getRowIndex(node) == row) {
                 children.remove(node);
                 break;
             }
         }
     }
-    
+
     public void addPiece(PieceType pieceType, int col, int row) {
         ImageView piece = PieceCreate.createPiece(pieceType, 45.0);
         gridPane.add(piece, col, row);
     }
-    
+
 }

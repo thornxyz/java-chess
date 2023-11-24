@@ -48,7 +48,7 @@ public class Board {
 			}
 		}
 	}
-	
+
 	public Map<Location, Square> getLocationSquareMap() {
 		return locationSquareMap;
 	}
@@ -62,4 +62,3 @@ public class Board {
 	}
 
 }
-

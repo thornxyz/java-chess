@@ -54,7 +54,6 @@ public class Rook extends AbstractPiece {
             e.printStackTrace();
         }
     }
-    
 
     @Override
     public List<Location> getValidMoves(Board board, Square square) {

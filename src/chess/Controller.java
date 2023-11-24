@@ -16,32 +16,32 @@ public class Controller {
 
     @FXML
     private GridPane chessboard;
-    
+
     @FXML
     private TextField moveInputField;
-    
+
     private Chessboard gameChessboard;
-    Board gameBoard=new Board();
+    Board gameBoard = new Board();
 
     public void initialize() {
-        gameChessboard = new Chessboard(this.chessboard,this.gameBoard);
+        gameChessboard = new Chessboard(this.chessboard, this.gameBoard);
         addPieces(gameChessboard);
         moveInputField.setStyle("-fx-font-size: 14; -fx-font-family: 'Arial';");
         moveInputField.setOnKeyPressed(this::handleKeyPress);
     }
 
     private void addPieces(Chessboard chessboard) {
-    	PieceFactory.addPieces(gameBoard,chessboard);
+        PieceFactory.addPieces(gameBoard, chessboard);
     }
-    
+
     private void handleKeyPress(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            String move = moveInputField.getText().toUpperCase(); 
+            String move = moveInputField.getText().toUpperCase();
             processMove(move);
             moveInputField.clear();
         }
     }
-    
+
     private void processMove(String move) {
         try {
             String[] fromTo = move.split(",");
@@ -67,6 +67,5 @@ public class Controller {
             e.printStackTrace();
         }
     }
-
 
 }

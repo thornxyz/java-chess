@@ -29,7 +29,7 @@ public class Pawn extends AbstractPiece {
 
 		if (isFirstMove) {
 			moveCandidates.add(LocationFactory.build(current, 0, 2 * sign));
-			isFirstMove = false; 
+			isFirstMove = false;
 		}
 
 		moveCandidates.add(LocationFactory.build(current, 1, sign));
@@ -45,21 +45,18 @@ public class Pawn extends AbstractPiece {
 
 	private boolean validateMove(Location candidate, Map<Location, Square> squareMap) {
 		Square destinationSquare = squareMap.get(candidate);
-
 		if (!squareMap.containsKey(candidate)) {
-			return false; 
+			return false;
 		}
-
 		if (destinationSquare.isOccupied()) {
 			if (candidate.getFile().equals(this.getCurrentSquare().getLocation().getFile())) {
-				return false; 
+				return false;
 			} else {
-				
 				return true;
 			}
 		} else {
 			if (!candidate.getFile().equals(this.getCurrentSquare().getLocation().getFile())) {
-				return false; 
+				return false;
 			}
 		}
 
@@ -76,7 +73,7 @@ public class Pawn extends AbstractPiece {
 
 		if (isFirstMove) {
 			moveCandidates.add(LocationFactory.build(current, 0, 2 * sign));
-			isFirstMove = false; 
+			isFirstMove = false;
 		}
 
 		moveCandidates.add(LocationFactory.build(current, 1, sign));

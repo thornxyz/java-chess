@@ -11,7 +11,8 @@ import chess.makeboard.PieceType;
 import chess.squares.Square;
 
 public final class PieceFactory {
-    private PieceFactory() {}
+    private PieceFactory() {
+    }
 
     public static Map<Location, AbstractPiece> getPieces() {
         Map<Location, AbstractPiece> pieces = new HashMap<>();
@@ -44,7 +45,7 @@ public final class PieceFactory {
 
         return pieces;
     }
-    
+
     public static void addPieces(Board board, Chessboard chessboard) {
         Map<Location, AbstractPiece> pieces = getPieces();
 
@@ -53,11 +54,12 @@ public final class PieceFactory {
             AbstractPiece piece = entry.getValue();
 
             Square square = board.getLocationSquareMap().get(location);
-            chessboard.addPiece(getPieceType(piece), square.getLocation().getFile().ordinal() + 1, 9-square.getLocation().getRank());
+            chessboard.addPiece(getPieceType(piece), square.getLocation().getFile().ordinal() + 1,
+                    9 - square.getLocation().getRank());
             square.setOccupied(true);
         }
     }
-    
+
     public static PieceType getPieceType(AbstractPiece piece) {
         if (piece instanceof Rook) {
             return piece.getPieceColor() == PieceColor.LIGHT ? PieceType.WHITE_ROOK : PieceType.BLACK_ROOK;
@@ -75,7 +77,5 @@ public final class PieceFactory {
             throw new IllegalArgumentException("Unknown piece type: " + piece.getClass().getSimpleName());
         }
     }
-    
-    
-}
 
+}

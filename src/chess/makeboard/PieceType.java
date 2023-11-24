@@ -23,5 +23,5 @@ public enum PieceType {
     public String getImagePath() {
         return imagePath;
     }
-    
+
 }
