@@ -23,7 +23,7 @@ public class Pawn extends AbstractPiece {
 	public List<Location> getValidMoves(Board board) {
 		List<Location> moveCandidates = new ArrayList<>();
 		Location current = this.getCurrentSquare().getLocation();
-		int sign = (pieceColor.equals(PieceColor.DARK)) ? -1 : 1;
+		int sign = (pieceColor.equals(PieceColor.BLACK)) ? -1 : 1;
 
 		moveCandidates.add(LocationFactory.build(current, 0, sign));
 
@@ -67,7 +67,7 @@ public class Pawn extends AbstractPiece {
 	public List<Location> getValidMoves(Board board, Square square) {
 		List<Location> moveCandidates = new ArrayList<>();
 		Location current = square.getLocation();
-		int sign = (pieceColor.equals(PieceColor.DARK)) ? -1 : 1;
+		int sign = (pieceColor.equals(PieceColor.BLACK)) ? -1 : 1;
 
 		moveCandidates.add(LocationFactory.build(current, 0, sign));
 

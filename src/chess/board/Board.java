@@ -35,7 +35,7 @@ public class Board {
 					newSquare.setCurrentPiece(piece);
 					newSquare.setOccupied(true);
 					piece.setCurrentSquare(newSquare);
-					if (piece.getPieceColor().equals(PieceColor.DARK)) {
+					if (piece.getPieceColor().equals(PieceColor.BLACK)) {
 						darkPieces.add(piece);
 					} else {
 						lightPieces.add(piece);
