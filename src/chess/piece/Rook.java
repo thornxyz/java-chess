@@ -1,13 +1,14 @@
-package com.chess.piece;
+package chess.piece;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.chess.board.Board;
-import com.chess.common.Location;
-import com.chess.common.LocationFactory;
-import com.chess.squares.Square;
+import chess.board.Board;
+import chess.common.Location;
+import chess.common.LocationFactory;
+import chess.squares.Square;
+
 
 public class Rook extends AbstractPiece {
 
@@ -28,7 +29,10 @@ public class Rook extends AbstractPiece {
         return moveCandidates;
     }
 
-    private void getRankCandidates(List<Location> moveCandidates, Map<Location, Square> squareMap, Location current,
+    private void getRankCandidates(
+    		List<Location> moveCandidates, 
+    		Map<Location, Square> squareMap, 
+    		Location current,
             int offset) {
         try {
             Location next = LocationFactory.build(current, current.getFile().ordinal(), offset);
@@ -44,11 +48,14 @@ public class Rook extends AbstractPiece {
                 next = LocationFactory.build(next, next.getFile().ordinal(), offset);
             }
         } catch (Exception e) {
-            e.printStackTrace(); // Handle or log the exception as needed
+            e.printStackTrace();
         }
     }
 
-    private void getFileCandidates(List<Location> moveCandidates, Map<Location, Square> squareMap, Location current,
+    private void getFileCandidates(
+    		List<Location> moveCandidates, 
+    		Map<Location, Square> squareMap, 
+    		Location current,
             int offset) {
         try {
             Location next = LocationFactory.build(current, offset, 0);
@@ -64,7 +71,7 @@ public class Rook extends AbstractPiece {
                 next = LocationFactory.build(next, 0, offset);
             }
         } catch (Exception e) {
-            e.printStackTrace(); // Handle or log the exception as needed
+            e.printStackTrace(); 
         }
     }
 
@@ -80,3 +87,4 @@ public class Rook extends AbstractPiece {
         return moveCandidates;
     }
 }
+

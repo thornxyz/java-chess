@@ -1,7 +1,7 @@
-package com.chess.squares;
+package chess.squares;
 
-import com.chess.common.Location;
-import com.chess.piece.AbstractPiece;
+import chess.common.Location;
+import chess.piece.AbstractPiece;
 
 public class Square {
 	private final SquareColor squareColor;

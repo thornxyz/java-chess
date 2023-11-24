@@ -1,13 +1,13 @@
-package com.chess.piece;
+package chess.piece;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.chess.board.Board;
-import com.chess.common.Location;
-import com.chess.common.LocationFactory;
-import com.chess.squares.Square;
+import chess.board.Board;
+import chess.common.Location;
+import chess.common.LocationFactory;
+import chess.squares.Square;
 
 public class Bishop extends AbstractPiece {
 

@@ -1,4 +1,4 @@
-package com.chess.common;
+package chess.common;
 
 public class LocationFactory {
 	private static final File[] files = File.values();

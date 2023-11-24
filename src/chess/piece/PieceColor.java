@@ -1,4 +1,4 @@
-package com.chess.piece;
+package chess.piece;
 
 public enum PieceColor {
 	LIGHT,

@@ -1,4 +1,4 @@
-package com.chess.common;
+package chess.common;
 
 import java.util.Objects;
 

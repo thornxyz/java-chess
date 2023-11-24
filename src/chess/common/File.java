@@ -1,4 +1,4 @@
-package com.chess.common;
+package chess.common;
 
 public enum File {
 	A,B,C,D,E,F,G,H

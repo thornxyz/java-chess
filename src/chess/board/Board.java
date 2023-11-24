@@ -1,17 +1,17 @@
-package com.chess.board;
+package chess.board;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.chess.common.File;
-import com.chess.common.Location;
-import com.chess.piece.AbstractPiece;
-import com.chess.piece.PieceColor;
-import com.chess.piece.PieceFactory;
-import com.chess.squares.Square;
-import com.chess.squares.SquareColor;
+import chess.common.File;
+import chess.common.Location;
+import chess.piece.AbstractPiece;
+import chess.piece.PieceColor;
+import chess.piece.PieceFactory;
+import chess.squares.Square;
+import chess.squares.SquareColor;
 
 public class Board {
 	private static final Integer BOARD_LENGTH = 8;
@@ -48,7 +48,7 @@ public class Board {
 			}
 		}
 	}
-
+	
 	public Map<Location, Square> getLocationSquareMap() {
 		return locationSquareMap;
 	}
@@ -61,27 +61,5 @@ public class Board {
 		return darkPieces;
 	}
 
-	public void printBoard() {
-		System.out.println();
-		for (int i = 0; i < boardSquares.length; i++) {
-			System.out.print("\t");
-			System.out.print(BOARD_LENGTH - i + " ");
-			for (int j = 0; j < boardSquares[i].length; j++) {
-				if (boardSquares[i][j].isOccupied()) {
-					AbstractPiece piece = boardSquares[i][j].getCurrentPiece();
-					System.out.print(piece.getName().charAt(0) + " ");
-				} else {
-					System.out.print("- ");
-				}
-			}
-			System.out.println();
-		}
-		System.out.print("\t");
-		System.out.print("  ");
-		for (File file : File.values()) {
-			System.out.print(file.name() + " ");
-		}
-		System.out.println();
-		System.out.println();
-	}
 }
+
