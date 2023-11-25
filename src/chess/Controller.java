@@ -7,6 +7,7 @@ import chess.makeboard.Chessboard;
 import chess.piece.PieceFactory;
 import chess.squares.Square;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -20,14 +21,19 @@ public class Controller {
     @FXML
     private TextField moveInputField;
 
+    @FXML
+    public Label outputLabel;
+
     private Chessboard gameChessboard;
     Board gameBoard = new Board();
 
     public void initialize() {
         gameChessboard = new Chessboard(this.chessboard, this.gameBoard);
         addPieces(gameChessboard);
-        moveInputField.setStyle("-fx-font-size: 14; -fx-font-family: 'Arial';");
+        moveInputField.setStyle("-fx-font-size: 14; -fx-font-family: 'Arial'; -fx-alignment: CENTER");
         moveInputField.setOnKeyPressed(this::handleKeyPress);
+        outputLabel.setStyle("-fx-font-size: 14; -fx-font-family: 'Arial'; -fx-alignment: CENTER");
+        outputLabel.setText("");
     }
 
     private void addPieces(Chessboard chessboard) {
@@ -46,7 +52,8 @@ public class Controller {
         try {
             String[] fromTo = move.split(",");
             if (fromTo.length != 2) {
-                throw new IllegalArgumentException("Invalid move format. Please enter a move like 'E2,E4'.");
+                outputLabel.setText("Invalid move format. Please enter a move like 'E2,E4'");
+                throw new IllegalArgumentException("Invalid move format. Please enter a move like 'E2,E4'");
             }
 
             File fromFile = File.valueOf(String.valueOf(Character.toUpperCase(fromTo[0].charAt(0))));
@@ -56,13 +63,17 @@ public class Controller {
 
             Square fromSq = gameBoard.getLocationSquareMap().get(new Location(fromFile, fromRank));
             Square toSq = gameBoard.getLocationSquareMap().get(new Location(toFile, toRank));
+            outputLabel.setText("");
 
-            fromSq.getCurrentPiece().makeMove(gameChessboard, chessboard, gameBoard, toSq);
+            fromSq.getCurrentPiece().makeMove(gameChessboard, chessboard, gameBoard, toSq, outputLabel);
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
+            outputLabel.setText("Invalid move format");
         } catch (NullPointerException e) {
             System.out.println("Current square is empty");
+            outputLabel.setText("Current square is empty");
         } catch (Exception e) {
+            outputLabel.setText("Unexpected error");
             System.out.println("An unexpected error occurred: " + e.getMessage());
             e.printStackTrace();
         }

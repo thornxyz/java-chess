@@ -8,6 +8,7 @@ import chess.common.Location;
 import chess.makeboard.Chessboard;
 import chess.makeboard.PieceType;
 import chess.squares.Square;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 public abstract class AbstractPiece {
@@ -49,9 +50,10 @@ public abstract class AbstractPiece {
 		currentTurn = (currentTurn == PieceColor.WHITE)?PieceColor.BLACK:PieceColor.WHITE;
 	}
 
-	public void makeMove(Chessboard chessboard, GridPane gridpane, Board board, Square square) {
+	public void makeMove(Chessboard chessboard, GridPane gridpane, Board board, Square square, Label outputLabel) {
         if (this.getPieceColor() != currentTurn) {
-            System.out.println("It's not your turn. The board remains unchanged.");
+            System.out.println("It's not your turn!");
+            outputLabel.setText("It's not your turn!");
             return;
         }
 
@@ -86,8 +88,9 @@ public abstract class AbstractPiece {
                     int capturedPieceCol = capturedPieceRank.ordinal() + 1;
                     Chessboard.removePiece(gridpane, capturedPieceCol, capturedPieceRow);
 
-                    System.out.println("Piece captured: " + capturedPiece.getName() +
-                                       " at " + capturedPieceLocation.toString());
+                    String cap = "Piece captured: " + capturedPiece.getName() +" at " + capturedPieceLocation.toString();
+                    System.out.println(cap);
+                    outputLabel.setText(cap);
                 }
 
                 Location next = square.getLocation();
@@ -102,6 +105,7 @@ public abstract class AbstractPiece {
 
             } else {
                 System.out.println("Invalid move. You cannot capture your own piece.");
+                outputLabel.setText("Invalid move. You cannot capture your own piece.");
             }
 
         } else {
@@ -109,6 +113,7 @@ public abstract class AbstractPiece {
             currentSquare.setCurrentPiece(previousPiece);
 
             System.out.println("Invalid move. The board remains unchanged.");
+            outputLabel.setText("Invalid move. The board remains unchanged.");;
         }
     }
 }
