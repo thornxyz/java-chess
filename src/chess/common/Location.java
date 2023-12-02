@@ -37,6 +37,6 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location{" + "file=" + file + ", rank=" + rank + '}';
+		return "Location{" + "file=" + file + ",rank=" + rank + '}';
 	}
 }

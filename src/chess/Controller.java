@@ -32,7 +32,7 @@ public class Controller {
         addPieces(gameChessboard);
         moveInputField.setStyle("-fx-font-size: 14; -fx-font-family: 'Arial'; -fx-alignment: CENTER");
         moveInputField.setOnKeyPressed(this::handleKeyPress);
-        outputLabel.setStyle("-fx-font-size: 14; -fx-font-family: 'Arial'; -fx-alignment: CENTER");
+        outputLabel.setStyle("-fx-font-size: 13; -fx-font-family: 'Arial'; -fx-alignment: CENTER");
         outputLabel.setText("");
     }
 
