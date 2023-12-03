@@ -3,7 +3,6 @@ package chess.piece;
 import java.util.List;
 
 import chess.board.Board;
-import chess.common.File;
 import chess.common.Location;
 import chess.makeboard.Chessboard;
 import chess.makeboard.PieceType;
